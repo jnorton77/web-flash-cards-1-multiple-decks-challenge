@@ -1,6 +1,6 @@
 <div class="content">
   <form action="/users" method="PUT">
-    Name: <input name="name" type="text"><%= @user.name %></input>
-    Password: <input name="password" type="text"><%= @user.password %></input>
+    Name: <input name="name" type="text" value=<%= @user.name %>>
+    Password: <input name="password" type="text" value=<%= @user.password %>>
     <input type="submit" value="update">
 </div>
