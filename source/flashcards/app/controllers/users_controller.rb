@@ -26,6 +26,15 @@ get '/users/:id/edit' do
   erb :"users/edit"
 end
 
+put "/users/:id" do
+  @user = User.find_by(params[:id])
+  if @user.update(params)
+    redirect to("/users/#{@user.id}")
+  else
+    erb :"user/edit"
+  end
+end
+
 # # List all Posts (index)
 # get "/posts" do
 #   @posts = Post.all
