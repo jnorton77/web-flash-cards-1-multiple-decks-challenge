@@ -12,6 +12,15 @@ get '/users/new' do
 	erb :"users/new"
 end
 
+post '/users' do
+  @user = User.new(params)
+  if @user.save
+    redirect to "/users/#{@user.id}"
+  else
+    erb :"users/new"
+  end
+end
+
 # # List all Posts (index)
 # get "/posts" do
 #   @posts = Post.all
