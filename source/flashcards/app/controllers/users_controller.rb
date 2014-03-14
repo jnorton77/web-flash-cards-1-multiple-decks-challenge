@@ -35,6 +35,11 @@ put "/users/:id" do
   end
 end
 
+delete "/users/:id" do
+  User.destroy(params[:id])
+  redirect to("/users")
+end
+
 # # List all Posts (index)
 # get "/posts" do
 #   @posts = Post.all
