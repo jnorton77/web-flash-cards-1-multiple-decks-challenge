@@ -1,14 +1,12 @@
-get '/users' do
-  # Look in app/views/index.erb
-  # display a list of all posts
+get '/users' do 
   @users = User.all
   erb :"index/users"
 end
 
-# get '/posts/:id' do
-# 	# Show me a particular post
-# 	erb :"posts/show"
-# end
+get '/users/:id' do
+  @user = User.find_by(params[:id])
+	erb :"users/show"
+end
 
 # post '/posts' do
 # 	# create a new post
