@@ -21,6 +21,11 @@ post '/users' do
   end
 end
 
+get '/users/:id/edit' do
+  @user = User.find_by(params[:id])
+  erb :"users/edit"
+end
+
 # # List all Posts (index)
 # get "/posts" do
 #   @posts = Post.all
