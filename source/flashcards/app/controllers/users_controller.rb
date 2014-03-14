@@ -5,10 +5,11 @@ get '/users' do
   erb :"index/users"
 end
 
-# get '/posts/:id' do
-# 	# Show me a particular post
-# 	erb :"posts/show"
-# end
+get '/users/:id' do
+	# Show me a particular post
+  @user = User.find_by(params[:id])
+	erb :"users/show"
+end
 
 # post '/posts' do
 # 	# create a new post
