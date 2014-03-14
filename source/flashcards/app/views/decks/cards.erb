@@ -1,0 +1,8 @@
+<div class="content">
+  <ul>
+      <li>What is the capital of <%= Card.find(session[:card]).question %>?</li>
+  </ul>
+  <form autofocus action="/decks" method="POST">
+  	<input type="text" name="answer">
+  </form>
+</div>

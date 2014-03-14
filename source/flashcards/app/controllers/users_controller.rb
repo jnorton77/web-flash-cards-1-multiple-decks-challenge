@@ -1,4 +1,4 @@
-get '/users' do 
+get '/users' do
   @users = User.all
   erb :"users/index"
 end
@@ -35,7 +35,7 @@ put "/users/:id" do
   if @user.update(params[:user])
     redirect to("/users/#{@user.id}")
   else
-    erb :"user/edit"
+    erb :"users/edit"
   end
 end
 
