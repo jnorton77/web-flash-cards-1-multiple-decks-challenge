@@ -1,6 +1,12 @@
 <div class="content">
-  <form action="/users" method="PUT">
-    Name: <input name="name" type="text" value=<%= @user.name %>>
-    Password: <input name="password" type="text" value=<%= @user.password %>>
+  <form action="/users/<%=@user.id%>" method="POST">
+    <input type="hidden" name="_method" value="put" />
+    Name: <input name="user[name]" type="text" value=<%= @user.name %>>
+    Password: <input name="user[password]" type="text" value=<%= @user.password %>>
     <input type="submit" value="update">
+  </form>
+  <form action="/users/<%=@user.id%>" method="POST">
+    <input type="hidden" name="_method" value="delete" />
+    <input type="submit" value="Delete"/>
+  </form>
 </div>

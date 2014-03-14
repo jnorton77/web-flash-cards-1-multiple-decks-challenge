@@ -31,8 +31,8 @@ get '/users/:id/edit' do
 end
 
 put "/users/:id" do
-  @user = User.find_by(params[:id])
-  if @user.update(params)
+  @user = User.find_by(id: params[:id])
+  if @user.update(params[:user])
     redirect to("/users/#{@user.id}")
   else
     erb :"user/edit"
