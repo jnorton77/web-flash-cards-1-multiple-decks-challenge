@@ -1,12 +1,10 @@
 <div class="content">
   <ul>
-      <li>What is the capital of <%= Card.find(session[:card]).question %>?</li>
+      <li>What is the capital of <span></span>?</li>
   </ul>
-  <span id="hiddenAnswer"><%= Card.find(session[:card]).answer %></span>
+  <span id="answer"></span>
   <form autofocus action="/decks" method="POST" id="card">
   	<input type="text" name="answer">
   </form>
-  <p id="answer">The correct answer is <span></span></p>
-  <p>correct: <%= session[:correct] %></p>
-  <p>incorrect: <%= session[:incorrect] %></p>
+  <p id="answerdisplay">The correct answer: <span></span></p>
 </div>
