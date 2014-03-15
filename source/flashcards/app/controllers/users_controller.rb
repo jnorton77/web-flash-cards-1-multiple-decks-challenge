@@ -1,4 +1,6 @@
+
 enable :sessions
+
 
 get '/users' do
   @users = User.all

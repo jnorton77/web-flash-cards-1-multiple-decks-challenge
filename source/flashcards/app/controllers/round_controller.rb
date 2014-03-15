@@ -1,3 +1,4 @@
+require 'json'
 enable :sessions
 
 get '/decks' do
@@ -7,26 +8,31 @@ get '/decks' do
 end
 
 get '/decks/:deck_name' do
-	authenticate!
+	session[:total_correct] = 0
+	session[:total_incorrect] = 0
 	session[:cards] = Deck.find_by(name: params[:deck_name]).cards.map(&:id).sample(5)
-	session[:card] = session[:cards].pop
-	p session[:card]
 	erb :"decks/cards"
 end
 
-post '/decks' do
-session[:correct] ||= 0
-session[:incorrect] ||= 0
+post '/decks/:deck_name' do
+	# authenticate!
+	content_type :json
+	session[:total_correct] += 1 if params[:correct] ==  "true"
+	session[:total_incorrect] += 1 if params[:correct] == "false"
 
-	if Card.find(session[:card]).answer == params[:answer]
-		session[:correct] += 1
+	if session[:cards].empty?
+		{endgame: true}.to_json
 	else
-		session[:incorrect] += 1
-	end
 		session[:card] = session[:cards].pop
-		Card.find(session[:card]).answer
+		{ question: Card.find(session[:card]).question,
+			answer: Card.find(session[:card]).answer,
+			endgame: false
+		}.to_json
+	end
 end
 
-post '/decks/count' do
-	session[:cards].count.to_s
+get '/results' do
+	erb :results
 end
+
+

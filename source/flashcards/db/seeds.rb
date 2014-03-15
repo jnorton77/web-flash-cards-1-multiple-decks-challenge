@@ -18,11 +18,11 @@ end
 module StatesImporter
 	def self.import
 		deck = Deck.create(name: 'states')
-		count = 1
+		# count = 1
 		CSV.foreach('db/states.csv', headers: true, header_converters: :symbol) do |row|
 			Card.create(question: row[:name], answer: row[:capital], deck: deck)
-			count += 1
-			break if count > 5
+			# count += 1
+			# break if count > 5
 		end
 	end
 end
