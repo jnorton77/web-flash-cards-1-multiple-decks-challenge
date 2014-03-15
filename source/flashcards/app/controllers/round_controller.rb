@@ -1,12 +1,14 @@
 enable :sessions
 
 get '/decks' do
+	authenticate!
 	@decks = Deck.all
 	erb :"decks/index"
 end
 
 get '/decks/:deck_name' do
-	session[:cards] = Deck.find_by(name: params[:deck_name]).cards.map(&:id)
+	authenticate!
+	session[:cards] = Deck.find_by(name: params[:deck_name]).cards.map(&:id).sample(5)
 	session[:card] = session[:cards].pop
 	p session[:card]
 	erb :"decks/cards"
@@ -21,11 +23,10 @@ session[:incorrect] ||= 0
 	else
 		session[:incorrect] += 1
 	end
-
-	if session[:cards].empty?
-		erb :"results"
-	else
 		session[:card] = session[:cards].pop
-		erb :"decks/cards"
-	end
+		Card.find(session[:card]).answer
+end
+
+post '/decks/count' do
+	session[:cards].count.to_s
 end

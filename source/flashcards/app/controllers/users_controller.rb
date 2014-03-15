@@ -1,3 +1,5 @@
+enable :sessions
+
 get '/users' do
   @users = User.all
   erb :"users/index"
@@ -17,12 +19,15 @@ post '/users' do
 end
 
 get '/users/:id' do
+  authenticate!
   @user = User.find_by(id: params[:id])
 	erb :"users/show"
 end
 
 
 get '/users/:id/edit' do
+  authenticate!
+
   @user = User.find_by(id: params[:id])
   erb :"users/edit"
 end
