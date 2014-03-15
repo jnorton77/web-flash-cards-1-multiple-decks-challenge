@@ -1,5 +1,7 @@
 <div class="content">
   <ul>
-    <li>@user.name</li>
+    <li><%=@user.name%></li>
   </ul>
+  <a href="<%= @user.id %>/edit"><button>Edit</button></a>
+  <a href="/decks"><button>Begin Round!</button></a>
 </div>

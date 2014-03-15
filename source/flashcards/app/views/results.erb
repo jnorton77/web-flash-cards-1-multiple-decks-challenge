@@ -1,0 +1,7 @@
+<div class="content">
+	<h1>YOUR RESULTS</h1>
+	<p>You got <%= session[:correct] %> correct</p>
+	<p>You got <%= session[:incorrect] %> incorrect</p>
+	<% session[:correct] = 0
+session[:incorrect] = 0 %>
+</div>

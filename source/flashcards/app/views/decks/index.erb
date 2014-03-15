@@ -1,0 +1,9 @@
+<div class="content">
+	<h2>Pick a deck!</h2>
+  <ul>
+    <% @decks.each do |deck| %>
+      <li><a href="/decks/<%=deck.name%>"><%= deck.name %></a></li>
+    <% end %>
+  </ul>
+</div>
+

@@ -1,7 +1,23 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+	 $("#answer").hide();
+	 $("#hiddenAnswer").hide();
+	 // var answer = $("#hidden").text
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+
+	 $("#card").on("submit", function() {
+	 		event.preventDefault();
+
+
+	 		$.post("/decks/count", {name: "hoh"}, function(data) {
+	 			console.log(data)
+	 			if (parseInt(data) == 0 ){
+	 				window.location.href = "/results"
+	 			}
+	 			else {
+	 				$("#answer span").text($("#hiddenAnswer").text());
+	 				$("#answer").show();
+	 				setTimeout(window.location.replace(""), 7000)
+	 			}
+	 			})
+	 });
 });

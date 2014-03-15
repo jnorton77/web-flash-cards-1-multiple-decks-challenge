@@ -1,11 +1,13 @@
 <div class="content">
-  <form action="/users/<%=@post.id%>" method="post">
-    Name: <input name="name" type="text"><%= @user.name %></input>
-    Password: <input name="password" type="text"><%= @user.password %></input>
+  <form action="/users/<%=@user.id%>" method="POST">
+    <input type="hidden" name="_method" value="put" />
+    Name: <input name="user[name]" type="text" value=<%= @user.name %>>
+    Password: <input name="user[password]" type="text" value=<%= @user.password %>>
     <input type="submit" value="update">
-  <form action="/users/<%=@post.id%>" method="delete">
-    <input type="hidden" value="_method" value="delete">
-    <input type="submit" value="DELETE USER">
+  </form>
+  <form action="/users/<%=@user.id%>" method="POST">
+    <input type="hidden" name="_method" value="delete" />
+    <input type="submit" value="Delete"/>
   </form>
 </div>
 
