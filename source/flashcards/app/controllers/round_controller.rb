@@ -31,10 +31,11 @@ post '/decks' do
 	Card.find(session[:card]).answer
 end
 
-post '/decks/count' do
-	session[:cards].count.to_s
-end
+# post '/decks/count' do
+# 	session[:cards].count.to_s
+# end
 
 get '/results' do
+
 	erb :results
 end
