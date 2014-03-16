@@ -3,10 +3,12 @@
       <li>What is the capital of <%= Card.find(session[:card]).question %>?</li>
   </ul>
   <span id="hiddenAnswer"><%= Card.find(session[:card]).answer %></span>
-  <form autofocus action="/decks" method="POST" id="card">
-  	<input type="text" name="answer">
+  <form action="/decks" method="POST" id="card">
+  	<input autofocus type="text" name="answer">
+    <input type="submit" value="submit">
   </form>
   <p id="answer">The correct answer is <span></span></p>
   <p>correct: <%= session[:correct] %></p>
   <p>incorrect: <%= session[:incorrect] %></p>
+  <a href="/results"><button id="results" >Go to Results</button></a>
 </div>

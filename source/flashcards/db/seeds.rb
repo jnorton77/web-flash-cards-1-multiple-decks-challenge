@@ -10,7 +10,7 @@ module SpanishImporter
 			question_answer = line.chomp.split("\t")
 			Card.create(question: question_answer[0], answer: question_answer[1], deck: deck)
 			count += 1
-			break if count > 5
+			break if count > 10
 		end
 	end
 end
@@ -18,11 +18,11 @@ end
 module StatesImporter
 	def self.import
 		deck = Deck.create(name: 'states')
-		count = 1
+		# count = 1
 		CSV.foreach('db/states.csv', headers: true, header_converters: :symbol) do |row|
 			Card.create(question: row[:name], answer: row[:capital], deck: deck)
-			count += 1
-			break if count > 5
+			# count += 1
+			# break if count >
 		end
 	end
 end
